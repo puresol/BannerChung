@@ -60,6 +60,14 @@
                         <h2>article section h2</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
                     </section>
+                    <section>
+                        <h2>article section h2</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                    </section>
+                    <section>
+                        <h2>article section h2</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                    </section>
                     <footer>
                         <h3>article footer h3</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
@@ -158,8 +166,9 @@
 						var target = $('#bannerParent');
 						var posX = $(window).width() + $(document).scrollLeft() - target.width();
 						var posY = $(window).height() + $(document).scrollTop() - target.height();
-						if(posY > docDefDim["height"]-target.height() || posX > docDefDim["width"]-target.width())
-							return;
+						console.log(posY);console.log(docDefDim["height"]-target.height());
+						posX = Math.min(posX, docDefDim["width"]-target.width());
+						posY = Math.min(posY, docDefDim["height"]-target.height());
 						target.css('left', posX+'px');
 						target.css('top', posY+'px');
 					}
@@ -168,6 +177,55 @@
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
+
+        <?php if($adType == "3" || $adType == "0"): ?>
+        <script type="text/javascript">
+        	
+        	$(function() {
+        		createWallBanners(110, 900, 100, 125);
+        	});
+        	
+        	function createWallBanners(wid, hei, topOffset, bottomOffset) {
+        		if(!topOffset)
+        			topOffset = 0;
+        		if(!bottomOffset)
+        			bottomOffset = 0;
+        		if(!hei)
+        			hei = 600;
+        		if(!wid)
+        			wid = 120;
+        		//var viewportHei = $(window).height();
+        		var docHei = $(document).height();
+        		hei = Math.min(hei, docHei-topOffset-bottomOffset);
+        		//var top = Math.max(topOffset, ((docHei-topOffset)/2 - hei/2)+topOffset);
+        		var top = topOffset;
+
+        		var leftWall = document.createElement('div');
+        		leftWall.style.width = wid + 'px';
+        		leftWall.style.height = hei + 'px';
+        		leftWall.style.position = 'absolute';
+        		leftWall.style.left = '0px';
+        		leftWall.style.top = top + 'px';
+        		leftWall.style.zIndex = 9998;
+        		$('body').append(leftWall);
+
+        		var rightWall = document.createElement('div');
+        		rightWall.style.width = wid + 'px';
+        		rightWall.style.height = hei + 'px';
+        		rightWall.style.position = 'absolute';
+        		rightWall.style.right = '0px';
+        		rightWall.style.top = top + 'px';
+        		rightWall.style.zIndex = 9999;
+        		$('body').append(rightWall);
+
+        		// debug
+        		leftWall.style.background = '#333';
+        		rightWall.style.background = '#333';
+        	}
+        </script>
+        <!--<div style="width:120px; height:500px; position:fixed; right:0px; top:100px; z-index:9999; background:#333;"></div>
+        <div style="width:120px; height:500px; position:fixed; left:0px; top:100px; z-index:9998; background:#333;"></div>-->
+        <?php endif; ?>
 
         <div class="footer-container">
             <footer class="wrapper">
