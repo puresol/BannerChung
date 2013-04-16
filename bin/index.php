@@ -1,7 +1,7 @@
 <?php
 	$pass = $_REQUEST['pass'];
 	if(!isset($pass) || $pass != "htm") {
-		die("Unknown request...");
+		die("Unknown request...<br />Ad type: 0-all, 1-LREC, 2-Popup, 3-Wall, 4-Expandable");
 	}
 	$adType = $_REQUEST['adPos'];
 ?>
@@ -76,7 +76,13 @@
 
                 <?php if($adType == "1" || $adType == "0"): ?>
                 <div style="float:left; width:300px; height:250px; border: #CCCCCC 1px dotted; margin-left: 5%; margin-bottom:5%; ">
-                	<!--/* OpenX Javascript Tag v2.8.10 */-->
+                	
+                    <!--
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    TRADITIONAL LREC
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    -->
+                    <!--/* OpenX Javascript Tag v2.8.10 */-->
 
 					<script type='text/javascript'><!--//<![CDATA[
 					   var m3_u = (location.protocol=='https:'?'https://go/zone/www/delivery/ajs.php':'http://zone.go.vn/smo/www/delivery/ajs.php');
@@ -93,8 +99,72 @@
 					   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
 					   document.write ("'><\/scr"+"ipt>");
 					//]]>--></script><noscript><a href='http://zone.go.vn/smo/www/delivery/ck.php?n=ac2b01b9&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://zone.go.vn/smo/www/delivery/avw.php?zoneid=965&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ac2b01b9' border='0' alt='' /></a></noscript>
+                    <!--
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    END TRADITIONAL LREC
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    -->
+
                 </div>
             	<?php endif; ?>
+
+                <?php if($adType == "4" || $adType == "0"): ?>
+                <div style="float:left; width:300px; height:250px; border: #CCCCCC 1px dotted; margin-left: 5%; margin-bottom:5%; ">
+
+                    <!--
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    EXPANDABLE BANNER
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    -->
+
+                    <!--/* OpenX Javascript Tag v2.8.10 */-->
+
+                    <script type='text/javascript'><!--//<![CDATA[
+                       var m3_u = (location.protocol=='https:'?'https://go/zone/www/delivery/ajs.php':'http://zone.go.vn/smo/www/delivery/ajs.php');
+                       var m3_r = Math.floor(Math.random()*99999999999);
+                       if (!document.MAX_used) document.MAX_used = ',';
+                       document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+                       document.write ("?zoneid=1030");
+                       document.write ('&amp;cb=' + m3_r);
+                       if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+                       document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+                       document.write ("&amp;loc=" + escape(window.location));
+                       if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+                       if (document.context) document.write ("&context=" + escape(document.context));
+                       if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+                       document.write ("'><\/scr"+"ipt>");
+                    //]]>--></script><noscript><a href='http://zone.go.vn/smo/www/delivery/ck.php?n=aa49f24e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://zone.go.vn/smo/www/delivery/avw.php?zoneid=1030&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aa49f24e' border='0' alt='' /></a></noscript>
+
+                    <!--
+                    <script type="text/javascript">
+                        var bcjsu = 'http://sephplayer.com/ads/js/expandablebannerchung.js';
+                        var randid = 'bcex'+Math.round(Math.random()*9999999);
+                        document.write("<scr"+"ipt type='text/javascript' src='"+bcjsu);
+                        document.write("'><\/scr"+"ipt>");
+                        document.write('<div id="'+randid+'" style="width:100%; height:100%; position:relative;"></div>');
+                        document.write("<scr"+"ipt type='text/javascript'>");
+                        document.write("$(function() { expBannerCtl.initExpBanner('"+randid+"', 'http://sephplayer.com/ads/media/xmen_300x250.swf', 'http://sephplayer.com/ads/media/xmen_500x500.swf', 500, 500, -200, 0, 'http://htmvn.com'); });");
+                        document.write("<\/scr"+"ipt>");
+                    </script>
+                    -->
+                    
+                    <!--
+                    <script type="text/javascript" src="./js/expandablebannerchung.js"></script>
+                    <div id="expholdr1" style="width:100%; height:100%; position:relative;"></div>
+                    <script type="text/javascript">
+                        expBannerCtl.initExpBanner('expholdr1', './media/xmen_300x250.swf', './media/xmen_500x500.swf', 500, 500, -200, 0, 'http://htmvn.com');
+                    </script>
+                    -->
+
+                    <!--
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    END EXPANDABLE BANNER
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    -->
+
+                </div>
+                
+                <?php endif; ?>
 
                 <aside>
                     <h3>aside</h3>
@@ -102,6 +172,12 @@
                 </aside>
 				
 				<?php if($adType == "2" || $adType == "0"): ?>
+
+                <!--
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                POPUP OLD STYLE (NOT USING position:fixed)
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                -->
 				<div id="bannerParent" style="width:300px; height:250px; position:absolute; top:-9999px; left:0px;">
 				<div id="bannerHolder" style="width:100%; height:100%; position:relative;">
 					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="htmBanner" name="htmBanner">
@@ -173,12 +249,24 @@
 						target.css('top', posY+'px');
 					}
 				</script>
+                <!--
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                END POPUP OLD STYLE
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                -->
+
 				<?php endif; ?>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
         <?php if($adType == "3" || $adType == "0"): ?>
+        
+        <!--
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        WALL BANNER
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        -->
         <script type="text/javascript">
         	
         	$(function() {
@@ -223,6 +311,12 @@
         		rightWall.style.background = '#333';
         	}
         </script>
+        <!--
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        END WALL BANNER
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        -->
+
         <!--<div style="width:120px; height:500px; position:fixed; right:0px; top:100px; z-index:9999; background:#333;"></div>
         <div style="width:120px; height:500px; position:fixed; left:0px; top:100px; z-index:9998; background:#333;"></div>-->
         <?php endif; ?>
