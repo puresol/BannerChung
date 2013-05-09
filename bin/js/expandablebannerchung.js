@@ -22,7 +22,8 @@ expBannerCtl.initExpBanner = function(holderId, state1Url, state2Url, expandWid,
 		orWid:orWid,
 		orHei:orHei,
 		orLeft:orLeft,
-		orTop:orTop
+		orTop:orTop,
+		inv:-1
 		};
 	this.insertBanner(holder, state1Url, orWid, orHei, orLeft, orTop, clickurl);
 	this.prepareOn(holderId);
@@ -31,9 +32,33 @@ expBannerCtl.initExpBanner = function(holderId, state1Url, state2Url, expandWid,
 expBannerCtl.prepareOn = function(holderId) {
 	var holder = $('div#'+holderId);
 	holder.one('mouseover', function() {
-		var data = expBannerCtl.data[holderId];
-		expBannerCtl.insertBanner($(this), data.state2Url, data.expandWid, data.expandHei, data.offsetX, data.offsetY, data.clickurl);
-		expBannerCtl.prepareOff(holderId);
+		var scope = $(this);
+		clearInterval(expBannerCtl.data[holderId]['inv']);
+		var count = 2;
+		var exited = false;
+		var cd = function() {
+			count--;
+			if(count == 0) {
+				clearInterval(expBannerCtl.data[holderId]['inv']);
+				if(exited) {
+					expBannerCtl.prepareOn(holderId);
+				} else {
+					doExp();
+				}
+			}
+		}
+		expBannerCtl.data[holderId]['inv'] = setInterval(cd, 1000);
+		scope.one('mouseout', function() {
+			exited = true;
+		});
+		var doExp = function() {
+			scope.off('mouseout');
+			// this is all that's important
+			var data = expBannerCtl.data[holderId];
+			expBannerCtl.insertBanner(scope, data.state2Url, data.expandWid, data.expandHei, data.offsetX, data.offsetY, data.clickurl);
+			expBannerCtl.prepareOff(holderId);
+			// end most important section
+		}
 	});
 }
 

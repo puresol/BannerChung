@@ -4,3 +4,4 @@
 .com.apple.timemachine.supported
 
 bin/logs
+bin/deprecated

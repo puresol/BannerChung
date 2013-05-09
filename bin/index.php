@@ -117,8 +117,10 @@
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     -->
 
-                    <!--/* OpenX Javascript Tag v2.8.10 */-->
-
+					<!-- Allow this to test from real OpenX server -->
+					<?php if(5==10) { ?>
+					<!--/* OpenX Javascript Tag v2.8.10 */-->
+					
                     <script type='text/javascript'><!--//<![CDATA[
                        var m3_u = (location.protocol=='https:'?'https://go/zone/www/delivery/ajs.php':'http://zone.go.vn/smo/www/delivery/ajs.php');
                        var m3_r = Math.floor(Math.random()*99999999999);
@@ -134,6 +136,7 @@
                        if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
                        document.write ("'><\/scr"+"ipt>");
                     //]]>--></script><noscript><a href='http://zone.go.vn/smo/www/delivery/ck.php?n=aa49f24e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://zone.go.vn/smo/www/delivery/avw.php?zoneid=1030&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aa49f24e' border='0' alt='' /></a></noscript>
+					<?php } ?>
 
                     <!--
                     <script type="text/javascript">
@@ -148,13 +151,13 @@
                     </script>
                     -->
                     
-                    <!--
+                    
                     <script type="text/javascript" src="./js/expandablebannerchung.js"></script>
                     <div id="expholdr1" style="width:100%; height:100%; position:relative;"></div>
                     <script type="text/javascript">
                         expBannerCtl.initExpBanner('expholdr1', './media/xmen_300x250.swf', './media/xmen_500x500.swf', 500, 500, -200, 0, 'http://htmvn.com');
                     </script>
-                    -->
+                    
 
                     <!--
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
